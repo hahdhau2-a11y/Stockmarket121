@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoro Trader - Stock Market Educator</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1935716944056481');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1935716944056481&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0f12;
+            background-image: 
+                radial-gradient(circle at 50% 30%, #151d2a 0%, transparent 70%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top-badge {
+            border: 1px solid #2a3547;
+            background-color: rgba(18, 26, 38, 0.6);
+            color: #8a99ad;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .profile-section {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .avatar-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .verified-badge {
+            background-color: #f59e0b;
+            color: #000000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: -10px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
+        .sub-header {
+            color: #3b82f6;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .main-title span {
+            color: #facc15;
+            display: block;
+        }
+
+        .description {
+            color: #9ca3af;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background-color: #0088cc;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+            background-color: #0077b5;
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        .sub-info {
+            color: #facc15;
+            font-size: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
+        .community-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 24px;
+        }
+
+        .avatar-group {
+            display: flex;
+        }
+
+        .avatar-group img {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid #0d0f12;
+            margin-left: -6px;
+        }
+
+        .avatar-group img:first-child {
+            margin-left: 0;
+        }
+
+        .features-grid {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .feature-card {
+            flex: 1;
+            background-color: rgba(18, 26, 38, 0.5);
+            border: 1px solid #1e293b;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            color: #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .bottom-card {
+            width: 100%;
+            background-color: rgba(18, 26, 38, 0.5);
+            border: 1px solid #1e293b;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        .disclaimer {
+            font-size: 9px;
+            color: #4b5563;
+            line-height: 1.4;
+            max-width: 360px;
+        }
+
+        .copyright {
+            font-size: 9px;
+            color: #374151;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-badge">
+            RESEARCH & MARKET EDUCATION - TRADING COMMUNITY
+        </div>
+
+        <div class="profile-section">
+            <img src="https://i.ibb.co/v6MgRZH4/IMG-20261026-180311-312.jpg" alt="Zoro Trader" class="avatar-img">
+            <br>
+            <div class="verified-badge">✔ MARKET EDUCATOR</div>
+        </div>
+
+        <div class="sub-header">STOCK MARKET & ANALYSIS EDUCATOR</div>
+
+        <h1 class="main-title">
+            Learn Stock Market & Analysis with
+            <span>ZORO TRADER</span>
+        </h1>
+
+        <p class="description">
+            Daily Market Analysis • Nifty & Bank Nifty • Educational Insights
+        </p>
+
+        <a href="https://t.me/+gM70YcQjR7xkODI1" class="cta-btn">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+            Join Telegram Community — Free
+        </a>
+
+        <div class="sub-info">
+            🔒 Instant Free Access • 100% Educational Content
+        </div>
+
+        <div class="community-counter">
+            <div class="avatar-group">
+                <img src="https://i.pravatar.cc/30?img=1" alt="user">
+                <img src="https://i.pravatar.cc/30?img=2" alt="user">
+                <img src="https://i.pravatar.cc/30?img=3" alt="user">
+                <img src="https://i.pravatar.cc/30?img=4" alt="user">
+            </div>
+            <span>Join our growing <strong>50,000+</strong> trading community</span>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                ⚡ Daily Market Updates
+            </div>
+            <div class="feature-card">
+                🎯 Nifty & BankNifty Setup
+            </div>
+        </div>
+
+        <div class="bottom-card">
+            🇮🇳 Made For Indian Traders & Investors
+        </div>
+
+        <p class="disclaimer">
+            Disclaimer: Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Content shared on this platform is strictly for educational, informational, and research purpose only. We do not provide any buy/sell tips, direct stock recommendations, or guaranteed returns.
+        </p>
+
+        <div class="copyright">
+            © 2026 ZORO TRADER
+        </div>
+    </div>
+
+</body>
+</html>
